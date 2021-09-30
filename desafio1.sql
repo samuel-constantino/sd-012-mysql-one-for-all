@@ -1,44 +1,49 @@
 CREATE DATABASE IF NOT EXISTS SpotifyClone;
 
-CREATE TABLE SpotifyClone.Plano(
-	plano_id INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE SpotifyClone.Plano (
+    plano_id INT PRIMARY KEY AUTO_INCREMENT,
     plano VARCHAR(15) NOT NULL,
     valor DOUBLE NOT NULL
 );
 
-CREATE TABLE SpotifyClone.Artista(
-	artista_id INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE SpotifyClone.Artista (
+    artista_id INT PRIMARY KEY AUTO_INCREMENT,
     artista VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE SpotifyClone.Usuario(
-	usuario_id INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE SpotifyClone.Usuario (
+    usuario_id INT PRIMARY KEY AUTO_INCREMENT,
     usuario VARCHAR(25) NOT NULL,
     idade INT NOT NULL,
     plano_id INT NOT NULL,
-    FOREIGN KEY (plano_id) REFERENCES Plano(plano_id)
+    FOREIGN KEY (plano_id)
+        REFERENCES Plano (plano_id)
 );
 
-CREATE TABLE SpotifyClone.Usuario_Artista(
-	usuario_id INT NOT NULL,
+CREATE TABLE SpotifyClone.Usuario_Artista (
+    usuario_id INT NOT NULL,
     artista_id INT NOT NULL,
-    CONSTRAINT PRIMARY KEY (usuario_id, artista_id),
-    FOREIGN KEY (usuario_id) REFERENCES Usuario(usuario_id),
-    FOREIGN KEY (artista_id) REFERENCES Artista(artista_id)
+    CONSTRAINT PRIMARY KEY (usuario_id , artista_id),
+    FOREIGN KEY (usuario_id)
+        REFERENCES Usuario (usuario_id),
+    FOREIGN KEY (artista_id)
+        REFERENCES Artista (artista_id)
 );
 
-CREATE TABLE SpotifyClone.Album(
-	album_id INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE SpotifyClone.Album (
+    album_id INT PRIMARY KEY AUTO_INCREMENT,
     album VARCHAR(50) NOT NULL,
     artista_id INT NOT NULL,
-    FOREIGN KEY (artista_id) REFERENCES Artista(artista_id)
+    FOREIGN KEY (artista_id)
+        REFERENCES Artista (artista_id)
 );
 
-CREATE TABLE SpotifyClone.Musica(
-	musica_id INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE SpotifyClone.Musica (
+    musica_id INT PRIMARY KEY AUTO_INCREMENT,
     musica VARCHAR(50) NOT NULL,
     album_id INT NOT NULL,
-    FOREIGN KEY (album_id) REFERENCES Album(album_id)
+    FOREIGN KEY (album_id)
+        REFERENCES Album (album_id)
 );
 
 CREATE TABLE SpotifyClone.Usuario_Musica(
