@@ -46,12 +46,14 @@ CREATE TABLE SpotifyClone.Musica (
         REFERENCES Album (album_id)
 );
 
-CREATE TABLE SpotifyClone.Usuario_Musica(
-	musica_id INT NOT NULL,
+CREATE TABLE SpotifyClone.Usuario_Musica (
+    musica_id INT NOT NULL,
     usuario_id INT NOT NULL,
-    CONSTRAINT PRIMARY KEY (musica_id, usuario_id),
-    FOREIGN KEY (musica_id) REFERENCES Musica(musica_id),
-    FOREIGN KEY (usuario_id) REFERENCES Usuario(usuario_id)
+    CONSTRAINT PRIMARY KEY (musica_id , usuario_id),
+    FOREIGN KEY (musica_id)
+        REFERENCES Musica (musica_id),
+    FOREIGN KEY (usuario_id)
+        REFERENCES Usuario (usuario_id)
 );
 
 INSERT INTO SpotifyClone.Plano (plano, valor) VALUES
