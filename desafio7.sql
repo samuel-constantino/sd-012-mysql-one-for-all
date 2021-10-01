@@ -1,4 +1,4 @@
-CREATE VIEW SpotifyClone.perfil_artista AS
+CREATE VIEW perfil_artistas AS
     SELECT 
         ar.artista AS `artista`,
         al.album AS `album`,
