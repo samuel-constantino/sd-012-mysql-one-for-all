@@ -111,17 +111,17 @@ INSERT INTO SpotifyClone.Musica (musica, album_id) VALUES
 ('Without My Streets', 5);
 
 INSERT INTO SpotifyClone.Usuario_Musica (musica_id, usuario_id) VALUES
-(37, 1),
-(42, 1),
-(50, 1),
-(52, 1),
-(49, 2),
-(53, 2),
-(38, 2),
-(51, 2),
-(40, 3),
-(52, 3),
-(42, 3),
-(39, 4),
-(54, 4),
-(47, 4);
+(1, 1),
+(6, 1),
+(14, 1),
+(16, 1),
+(13, 2),
+(17, 2),
+(2, 2),
+(15, 2),
+(4, 3),
+(16, 3),
+(6, 3),
+(3, 4),
+(18, 4),
+(11, 4);
