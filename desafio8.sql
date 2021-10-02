@@ -9,6 +9,6 @@ BEGIN
 	WHERE um.usuario_id = OLD.usuario_id;
     
     DELETE FROM Usuario_Artista AS ua
-	WHERE ua.usuario_id = OLD.usuario_id;
+    WHERE ua.usuario_id = OLD.usuario_id;
 END $$
 DELIMITER ;
