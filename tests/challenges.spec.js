@@ -1,7 +1,7 @@
 const { readFileSync } = require('fs');
 const { Sequelize } = require('sequelize');
 const Importer = require('mysql-import');
-
+jest.setTimeout(15000);
 describe('Queries de seleção', () => {
   let sequelize;
 
@@ -14,16 +14,16 @@ describe('Queries de seleção', () => {
       await importer.import('./desafio1.sql');
     }
     catch(error) {
-      console.log('Erro ao restaurar o dump!');
+      console.log('Erro ao restaurar o dump!', error);
     }
 
-    importer.disconnect();
+    await importer.disconnect();
     sequelize = new Sequelize('SpotifyClone', process.env.MYSQL_USER, process.env.MYSQL_PASSWORD, {host:process.env.HOSTNAME, dialect: 'mysql'})
   });
 
   afterAll(async () => {
     await sequelize.query('DROP DATABASE SpotifyClone;', { type: 'RAW' });
-    sequelize.close();
+    await sequelize.close();
 
     const importer = new Importer(
       { user: process.env.MYSQL_USER, password: process.env.MYSQL_PASSWORD, host: process.env.HOSTNAME }
@@ -426,7 +426,7 @@ describe('Queries de deleção', () => {
       const userId = (await sequelize.query(
         `SELECT ${userIdColumn} FROM ${userTable} WHERE ${userColumn} = 'Thati';`,
         { type: 'SELECT' },
-      ))[0][userIdColumn];
+        ))[0][userIdColumn]; 
 
       await sequelize.query(`DELETE FROM ${userTable} WHERE ${userColumn} = 'Thati';`);
 

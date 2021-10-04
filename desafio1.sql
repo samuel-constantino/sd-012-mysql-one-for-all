@@ -1,9 +1,11 @@
+DROP DATABASE IF EXISTS SpotifyClone;
+
 CREATE DATABASE IF NOT EXISTS SpotifyClone;
 
 CREATE TABLE SpotifyClone.Plano (
     plano_id INT PRIMARY KEY AUTO_INCREMENT,
     plano VARCHAR(15) NOT NULL,
-    valor DOUBLE NOT NULL
+    valor DECIMAL(5, 2) NOT NULL
 );
 
 CREATE TABLE SpotifyClone.Artista (
